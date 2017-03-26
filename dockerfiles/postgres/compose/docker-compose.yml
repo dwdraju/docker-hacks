@@ -1,0 +1,16 @@
+postgres:
+  build: .
+  ports:
+   - "5432:5432"
+  volumes:
+   - /etc/postgresql
+   - /var/log/postgresql
+   - /var/lib/postgresql   
+  restart: always
+
+postgres-data:
+  image: busybox
+  volumes_from:
+    - postgres
+  entrypoint: "true"  
+
